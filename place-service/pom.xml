@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.travelplanner</groupId>
-    <artifactId>places-service</artifactId>
+    <artifactId>place-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>places-service</name>
-    <description>places-service</description>
+    <name>place-service</name>
+    <description>place-service</description>
     <url/>
     <licenses>
         <license/>
