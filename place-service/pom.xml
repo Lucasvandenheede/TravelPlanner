@@ -8,11 +8,11 @@
         <version>3.4.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>fact.it</groupId>
-    <artifactId>place-service</artifactId>
+    <groupId>com.travelplanner</groupId>
+    <artifactId>places-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>place-service</name>
-    <description>place-service</description>
+    <name>places-service</name>
+    <description>places-service</description>
     <url/>
     <licenses>
         <license/>
@@ -35,36 +35,17 @@
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </path>
-                    </annotationProcessorPaths>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
