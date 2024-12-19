@@ -87,6 +87,19 @@ services:
       MYSQL_DB_HOST: mysql-weather
       MYSQL_DB_PORT: 3308
 
+  api-gateway:
+    depends_on:
+      - booking-service
+      - place-service
+      - travel-service
+      - weather-service
+    image: luckyboi61/api-gateway
+    ports:
+      - 8085:8085
+    environment:
+      PRODUCT_SERVICE_BASEURL: product-service:8080
+      ORDER_SERVICE_BASEURL: order-service:8081
+
   volumes:
     mongodb_place_data:
     mysql_booking_data:
