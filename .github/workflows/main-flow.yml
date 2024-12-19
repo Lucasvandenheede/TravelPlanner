@@ -22,13 +22,13 @@ jobs:
         run: mvn package -B
 
       - name: Docker login
-        run: docker login -u ${{ secrets.luckyboi61 }} -p ${{ secrets.RQpfGvedV7pdfnd }}
+        run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Docker Build
-        run: docker build -t ${{ secrets.luckyboi61 }}/booking-service:latest ./booking-service
+        run: docker build -t ${{ secrets.DOCKER_USER }}/booking-service:latest ./booking-service
 
       - name: Upload container to Docker Hub with Push
-        run: docker push ${{ secrets.luckyboi61 }}/booking-service:latest
+        run: docker push ${{ secrets.DOCKER_USER }}/booking-service:latest
   placeservice:
     runs-on: ubuntu-latest
     name: Java 17 build, test, deliver place-service container
@@ -48,13 +48,13 @@ jobs:
         run: mvn package -B
 
       - name: Docker login
-        run: docker login -u ${{ secrets.luckyboi61 }} -p ${{ secrets.RQpfGvedV7pdfnd }}
+        run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Docker Build
-        run: docker build -t ${{ secrets.luckyboi61 }}/place-service:latest ./place-service
+        run: docker build -t ${{ secrets.DOCKER_USER }}/place-service:latest ./place-service
 
       - name: Upload container to Docker Hub with Push
-        run: docker push ${{ secrets.luckyboi61 }}/place-service:latest
+        run: docker push ${{ secrets.DOCKER_USER }}/place-service:latest
   travelservice:
     runs-on: ubuntu-latest
     name: Java 17 build, test, deliver travel-service container
@@ -74,13 +74,13 @@ jobs:
         run: mvn package -B
 
       - name: Docker login
-        run: docker login -u ${{ secrets.luckyboi61 }} -p ${{ secrets.RQpfGvedV7pdfnd }}
+        run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD  }}
 
       - name: Docker Build
-        run: docker build -t ${{ secrets.luckyboi61 }}/travel-service:latest ./travel-service
+        run: docker build -t ${{ secrets.DOCKER_USER }}/travel-service:latest ./travel-service
 
       - name: Upload container to Docker Hub with Push
-        run: docker push ${{ secrets.luckyboi61 }}/travel-service:latest
+        run: docker push ${{ secrets.DOCKER_USER }}/travel-service:latest
   weatherservice:
     runs-on: ubuntu-latest
     name: Java 17 build, test, deliver weather-service container
@@ -100,10 +100,10 @@ jobs:
         run: mvn package -B
 
       - name: Docker login
-        run: docker login -u ${{ secrets.luckyboi61 }} -p ${{ secrets.RQpfGvedV7pdfnd }}
+        run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD  }}
 
       - name: Docker Build
-        run: docker build -t ${{ secrets.luckyboi61 }}/weather-service:latest ./weather-service
+        run: docker build -t ${{ secrets.DOCKER_USER }}/weather-service:latest ./weather-service
 
       - name: Upload container to Docker Hub with Push
-        run: docker push ${{ secrets.luckyboi61 }}/weather-service:latest
+        run: docker push ${{ secrets.DOCKER_USER }}/weather-service:latest
