@@ -1,0 +1,94 @@
+services:
+  mongo-place:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_place_data:/data/db
+
+  mysql-booking:
+    image: mysql:latest
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql_booking_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: sql
+
+  mysql-travel:
+    image: mysql:latest
+    ports:
+      - 3307:3306
+    volumes:
+      - mysql_travel_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: sql
+
+  mysql-weather:
+    image: mysql:latest
+    ports:
+      - 3308:3306
+    volumes:
+      - mysql_weather_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: sql
+
+  place-service:
+    depends_on:
+      - mongo-place
+    image: luckyboi61/place-service
+    ports:
+      - 8082:8082
+    links:
+      - mongo-products
+    environment:
+      MONGODB_PORT: 27017
+      MONGODB_HOST: mongo-products
+
+  booking-service:
+    depends_on:
+      - mysql-booking
+    image: luckyboi61/booking-service
+    ports:
+      - 8081:8081
+    links:
+      - mysql-booking
+    environment:
+      MYSQL_DB_USERNAME: admin
+      MYSQL_DB_PASSWORD: sql
+      MYSQL_DB_HOST: mysql-booking
+      MYSQL_DB_PORT: 3306
+
+  travel-service:
+    depends_on:
+      - mysql-travel
+    image: luckyboi61/travel-service
+    ports:
+      - 8083:8083
+    links:
+      - mysql-travel
+    environment:
+      MYSQL_DB_USERNAME: admin
+      MYSQL_DB_PASSWORD: sql
+      MYSQL_DB_HOST: mysql-travel
+      MYSQL_DB_PORT: 3307
+
+  weather-service:
+    depends_on:
+      - mysql-weather
+    image: luckyboi61/weather-service
+    ports:
+      - 8084:8084
+    links:
+      - mysql-weather
+    environment:
+      MYSQL_DB_USERNAME: admin
+      MYSQL_DB_PASSWORD: sql
+      MYSQL_DB_HOST: mysql-weather
+      MYSQL_DB_PORT: 3308
+
+  volumes:
+    mongodb_place_data:
+    mysql_booking_data:
+    mysql_travel_data:
+    mysql_weather_data:
