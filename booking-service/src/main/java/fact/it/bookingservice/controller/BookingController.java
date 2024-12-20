@@ -35,7 +35,6 @@ public class BookingController {
     @ResponseStatus(HttpStatus.OK)
     public BookingResponse getBookingById(@PathVariable Long id) {
         return bookingService.getBookingById(id);
-
     }
 
     // PUT: Update booking by ID
@@ -45,7 +44,7 @@ public class BookingController {
         bookingService.updateBooking(id, bookingRequest);
     }
 
-    // DELETE: Delete weather data by ID
+    // DELETE: Delete booking by ID
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteBooking(@PathVariable Long id) {

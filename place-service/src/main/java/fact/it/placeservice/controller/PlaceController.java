@@ -2,19 +2,16 @@ package fact.it.placeservice.controller;
 
 import fact.it.placeservice.dto.PlaceRequest;
 import fact.it.placeservice.dto.PlaceResponse;
-import fact.it.placeservice.model.Place;
 import fact.it.placeservice.service.PlaceService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/places")
+@RequestMapping("/api/place")
 @RequiredArgsConstructor
 
 public class PlaceController {
@@ -58,6 +55,4 @@ public class PlaceController {
         placeService.deletePlace(id);
         return ResponseEntity.noContent().build();
     }
-
-
 }
