@@ -25,35 +25,68 @@ spring:
   cloud:
     gateway:
       routes:
+    # Booking
+        # Create
         - id: booking-service
           uri: http://${BOOKING_SERVICE_BASEURL:localhost:8081}
           predicates:
-            - Path=/booking
+            - Path=/api/booking
             - Method=POST
           filters:
             - SetPath=/api/booking
+        # Show All
         - id: booking-service-all
           uri: http://${BOOKING_SERVICE_BASEURL:localhost:8081}
           predicates:
-            - Path=/booking
+            - Path=/api/booking/all
             - Method=GET
           filters:
-            - SetPath=/api/booking/all
-        - id: place-service
-          uri: http://${PLACE_SERVICE_BASEURL:localhost:8082}
+                - SetPath=/api/booking/all
+        # Get by ID
+        - id: booking-service-id
+          uri: http://${BOOKING_SERVICE_BASEURL:localhost:8081}
           predicates:
-            - Path=/place
+            - Path=/api/booking/{id}
+            - Method=GET
           filters:
-            - SetPath=/api/place
-        - id: travel-service
+            - SetPath=/api/booking/{id}
+        # Update by ID
+        - id: booking-service-id
+          uri: http://${BOOKING_SERVICE_BASEURL:localhost:8081}
+          predicates:
+            - Path=/api/booking/{id}
+            - Method=PUT
+          filters:
+            - SetPath=/api/booking/{id}
+        # Delete by ID
+        - id: booking-service-delete-id
+          uri: http://${BOOKING_SERVICE_BASEURL:localhost:8081}
+          predicates:
+            - Path=/api/booking/{id}
+            - Method=DELETE
+          filters:
+            - SetPath=/api/booking/{id}
+
+    # Place
+        - id: place-service-all
+          uri: http://${PLACE_SERVICE_BASEURL:localhost:8080}
+          predicates:
+            - Path=/api/place/all
+          filters:
+            - SetPath=/api/place/all
+
+    # Travel
+        - id: travel-service-all
           uri: http://${TRAVEL_SERVICE_BASEURL:localhost:8083}
           predicates:
-            - Path=/travel
+            - Path=/api/travel/all
           filters:
-            - SetPath=/api/travel
-        - id: weather-service
+            - SetPath=/api/travel/all
+
+    # Weather
+        - id: weather-service-all
           uri: http://${WEATHER_SERVICE_BASEURL:localhost:8084}
           predicates:
-            - Path=/weather
+            - Path=/api/weather/all
           filters:
-            - SetPath=/api/weather
+            - SetPath=/api/weather/all

@@ -20,34 +20,6 @@ public class PlaceService {
 
     private final PlaceRepository placeRepository;
 
-    @PostConstruct
-    public void loadData() {
-        if (placeRepository.count() <= 0) {
-            Place place = Place.builder()
-                    .name("Stainless steel acid-resistant seamless tube OD 6 mm x 1 mm steel grade 316 / 316L 180cm")
-                    .description("")
-                    .address("123 Industrial Lane, Steel City")
-                    .rating(4.5)
-                    .image("https://example.com/images/steel_tube.jpg")
-                    .type("Industrial Material")
-                    .status("Available")
-                    .build();
-
-            Place place1 = Place.builder()
-                    .name("Wooden beam 10 feet long")
-                    .description("Faux Wood Beams - 10 ft. Length & 10 in. Width Cast from natural wood beams with surface textures and wood-grain detail")
-                    .address("456 Timber Road, Woodville")
-                    .rating(4.8)
-                    .image("https://example.com/images/wooden_beam.jpg")
-                    .type("Construction Material")
-                    .status("Available")
-                    .build();
-
-            placeRepository.save(place);
-            placeRepository.save(place1);
-        }
-    }
-
     public void createPlace(PlaceRequest placeRequest) {
         Place place = Place.builder()
                 .name(placeRequest.getName())
@@ -108,5 +80,33 @@ public class PlaceService {
                 .type(place.getType())
                 .status(place.getStatus())
                 .build();
+    }
+
+    @PostConstruct
+    public void loadData() {
+        if (placeRepository.count() <= 0) {
+            Place place = Place.builder()
+                    .name("Stainless steel acid-resistant seamless tube OD 6 mm x 1 mm steel grade 316 / 316L 180cm")
+                    .description("")
+                    .address("123 Industrial Lane, Steel City")
+                    .rating(4.5)
+                    .image("https://example.com/images/steel_tube.jpg")
+                    .type("Industrial Material")
+                    .status("Available")
+                    .build();
+
+            Place place1 = Place.builder()
+                    .name("Wooden beam 10 feet long")
+                    .description("Faux Wood Beams - 10 ft. Length & 10 in. Width Cast from natural wood beams with surface textures and wood-grain detail")
+                    .address("456 Timber Road, Woodville")
+                    .rating(4.8)
+                    .image("https://example.com/images/wooden_beam.jpg")
+                    .type("Construction Material")
+                    .status("Available")
+                    .build();
+
+            placeRepository.save(place);
+            placeRepository.save(place1);
+        }
     }
 }
